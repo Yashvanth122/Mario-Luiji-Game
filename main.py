@@ -1,16 +1,4 @@
-#/ 
-  # File:    Pmario/Pluiji
-  # 
-  # Author1:  Yashvanth Sai Kumar Alamuri 
-  # Author2: ************
-  # Date:    Tuesday Jan 25
-  # Partner:  I worked alone  
-  # Course:  ICS3U
-  # 
-  # Summary of File: This is my pmario and pluiji assignment
-  # 
-  # *************
-  #/
+
 import pygame, sys
 
 pygame.init()
@@ -38,18 +26,18 @@ Bullettrravel = 0
 luijiBullet = 0
 Bullettraveldistance2 = 0
 FPS = 434
-# These are my variables that control all the actions of my game
 
 
-# This is the health variable where it shows how many lives luiji and mario have
+
+
 MARIOHEALTH = 5
 LUIJIHEALTH = 5
-#This controld the fonts for the game
+
 HP_Font = pygame.font.SysFont('arial',30)
 Win_Font = pygame.font.SysFont('comicsans',100)
-# set screen
+
 screen = pygame.display.set_mode(size)
-# load in pmario graphics
+
 pmario = pygame.image.load("pmario.gif")
 pmario = pygame.transform.scale(pmario, (70, 70))
 mariowin = False
@@ -76,10 +64,8 @@ pmarioright = pmario
 pmarioleft = pygame.transform.flip(pmario, 70, 0)
 
 
-# This is a list where when I give my command to shoot it stores them here
 Pmario_Bullets = []
 Pluji_Bullets = []
-# main game loop
 
 clock = pygame.time.Clock()
 while running:
@@ -112,7 +98,6 @@ while running:
                                              40, 40)
                     Pluji_Bullets.append(Bulletrect2)
 
-    # check for keys pressed
     keys_pressed = pygame.key.get_pressed()
     if keys_pressed[pygame.K_UP] and mariolanded:
         mariojump = mariojumpMax
@@ -127,12 +112,11 @@ while running:
             mariorectangle = mariorectangle.move([-1, 0])
             pmario = pmarioleft
 
-    # check for jump
     if mariojump >= 0:
         mariorectangle = mariorectangle.move([0, -2])
         mariojump -= 1
         mariolanded = False
-    # gravity
+    
     if mariorectangle.bottom <= height - groundpix:
         mariorectangle = mariorectangle.move(gravity)
     if luijirectangle.bottom <= height - groundpix:
@@ -153,7 +137,7 @@ while running:
         if luijirectangle.left > 0:
             luijirectangle = luijirectangle.move([-1, 0])
             pluiji = pluijileft
-    # check for jump
+
     if luijijump2 >= 0:
         luijirectangle = luijirectangle.move([0, -2])
         luijijump2 -= 1
@@ -327,7 +311,6 @@ while running:
 
 
 
-    # drawing
 
     screen.fill(sky)
     screen.blit(pmario, mariorectangle)
